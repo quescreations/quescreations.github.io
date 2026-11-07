@@ -113,3 +113,19 @@ links, homepage wiring, and this note are complete in the local commit.
   screen dark empty-state was retired; Kids Coming Attractions now holds an
   honest open-seat notice. Committed locally on `universe`; rides the same
   pending push (`git push origin universe:main`) once GitHub auth unblocks.
+
+## Addendum — 2026-11-07: AFTER THE LIE seated (main NOW SHOWING, founding film)
+- Q's seat order (via Media Lab, 2026-11-07 12:50): build the AFTER THE LIE seat
+  into the same pending push so the main room doesn't open empty.
+- This SUPERSEDES the 2026-11-03 build note's "Deliberately left off" entry for
+  AFTER THE LIE: Q ruled Movie V2 a COMPLETE MOVIE / Theatre entry on
+  2026-11-04 (Secret Sauce + Archive room), and it has been PUBLIC since then —
+  the website seat was the only open leg.
+- Verified public record (Archive room drop state, memory/2026-11-04.md +
+  2026-11-05.md): "AFTER THE LIE — The Complete Movie",
+  https://www.youtube.com/watch?v=mrr7Y7vb_Rw (@AfroAnimeQC), seated in the
+  playlist "THE THEATRE — Complete Films" (PLTuOJZD4qlkQ).
+- theatre.html main NOW SHOWING updated: the dark-screen empty state is retired;
+  AFTER THE LIE takes the founding-film seat with the youtube-nocookie embed
+  (mrr7Y7vb_Rw) + watch link. Nothing else on the page changed. Committed
+  locally on `universe`; rides the same pending push (universe:main).
