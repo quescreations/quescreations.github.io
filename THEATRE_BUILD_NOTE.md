@@ -101,3 +101,15 @@ Que's secure token entry), then from this repo:
 and verify https://quescreations.github.io/theatre.html loads with the
 Theatre content present. Nothing about the page itself is pending — content,
 links, homepage wiring, and this note are complete in the local commit.
+
+## Addendum — 2026-11-07: Adventure #1 seated (Kids NOW SHOWING)
+- The premiere fired Sat Nov 7, 12:00 PM Chicago and the film verified PUBLIC:
+  "The Boy Crew — The Great Doodle Tangle!" at https://youtu.be/pHuSwO6cuk4
+  (THE BOY CREW, UCZDOfSyvZLWzyFS3ckAghOA); also seated in the YouTube playlist
+  "THE THEATRE — Complete Films" (PLQWuDTY1VPEw).
+- Per this note's own seating rule, theatre.html's Kids Theatre room was updated:
+  Adventure #1 moved from Kids Coming Attractions to Kids NOW SHOWING with the
+  youtube-nocookie embed (pHuSwO6cuk4) + watch link + channel link; the kids
+  screen dark empty-state was retired; Kids Coming Attractions now holds an
+  honest open-seat notice. Committed locally on `universe`; rides the same
+  pending push (`git push origin universe:main`) once GitHub auth unblocks.
