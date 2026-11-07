@@ -129,3 +129,6 @@ links, homepage wiring, and this note are complete in the local commit.
   AFTER THE LIE takes the founding-film seat with the youtube-nocookie embed
   (mrr7Y7vb_Rw) + watch link. Nothing else on the page changed. Committed
   locally on `universe`; rides the same pending push (universe:main).
+
+## Correction — 2026-11-07: HOOD REAPER pulled from the shelf
+Per Que's ruling the same day the Theatre push went live ("Hood reaper isn't to go up — it's a dead lane right now"), the HOOD REAPER Ep.1 card was removed from the SERIES SHELF on theatre.html. The YouTube upload itself is untouched; the lane is simply not featured on the site while it is dead. If Que revives the lane, the card can be restored from git history.
