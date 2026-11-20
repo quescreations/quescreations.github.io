@@ -1,0 +1,106 @@
+/* QOrigin Studios — ALIVE PASS (shared by index.html, rise.html, arcade.html)
+   Molten gold drip layer, gold trail, rise cards that come alive on touch,
+   tilt + ignite, count-up stats, gold ticker, gold rush, molten pool footer.
+   Palette comes from each page's own :root — var(--gold) / var(--blue) /
+   var(--electric) / var(--black) — the site's exact values, nothing new. */
+
+/* --- shared layer stacking: canvas + pool sit behind page content ------- */
+#alive-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+#alive-pool{position:fixed;left:0;right:0;bottom:0;height:12px;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,
+    color-mix(in srgb,var(--gold) 38%,transparent) 55%,
+    color-mix(in srgb,var(--gold) 72%,transparent) 100%);
+  filter:blur(.4px);animation:alivePoolShimmer 5.5s ease-in-out infinite}
+@keyframes alivePoolShimmer{0%,100%{opacity:.5}50%{opacity:.85}}
+body>main,body>footer{position:relative;z-index:1}
+
+/* --- live 7:19 countdown ------------------------------------------------- */
+.alive-countdown{font-family:'Archivo Black',Impact,sans-serif;text-transform:uppercase;
+  color:var(--gold);letter-spacing:.1em;font-size:clamp(1rem,2.2vw,1.35rem);
+  margin:26px 0 0;font-variant-numeric:tabular-nums;line-height:1.2}
+.alive-countdown .cd-time{white-space:nowrap}
+
+/* --- gold ticker (index, under the hero) --------------------------------- */
+.gold-ticker{background:var(--black);border-top:1px solid var(--gold);
+  border-bottom:1px solid var(--gold);overflow:hidden;padding:10px 0}
+.gold-ticker-track{display:flex;width:max-content;animation:aliveTicker 38s linear infinite}
+.gold-ticker:hover .gold-ticker-track{animation-play-state:paused}
+.gold-ticker-chunk{white-space:nowrap;font-family:'Archivo Black',Impact,sans-serif;
+  color:var(--gold);letter-spacing:.14em;font-size:.85rem;text-transform:uppercase}
+@keyframes aliveTicker{to{transform:translateX(-50%)}}
+
+/* --- ignite on scroll (only when JS is running: html.alive-js) ----------- */
+html.alive-js .alive-reveal{opacity:0;transform:translateY(16px);
+  transition:opacity .7s ease,transform .7s ease}
+html.alive-js .alive-reveal.ignited{opacity:1;transform:none;
+  animation:aliveIgnite 1.1s ease-out}
+@keyframes aliveIgnite{
+  0%{box-shadow:inset 0 0 0 0 transparent}
+  25%{box-shadow:inset 0 0 90px color-mix(in srgb,var(--gold) 26%,transparent)}
+  100%{box-shadow:inset 0 0 0 0 transparent}}
+
+/* --- card life: gold edge glow + lift, tilt handled by JS ---------------- */
+.original-card,.character,.universe-card,.rise-card{
+  transition:transform .25s ease,box-shadow .25s ease}
+.original-card:hover,.character:hover,.universe-card:hover,.rise-card:hover,
+.original-card.alive-tilting,.character.alive-tilting,
+.universe-card.alive-tilting,.rise-card.alive-tilting{
+  box-shadow:0 0 0 2px var(--gold),var(--shadow)}
+
+/* --- rise cards: touch-to-rise hint chip --------------------------------- */
+.rise-card{position:relative}
+.rise-card::after{content:"TOUCH TO RISE";position:absolute;top:10px;right:10px;z-index:2;
+  background:rgba(5,7,8,.74);color:var(--gold);border:1px solid var(--gold);
+  font-size:.62rem;font-weight:800;letter-spacing:.14em;padding:5px 8px;
+  pointer-events:none;opacity:0;transition:opacity .3s ease}
+@media(pointer:coarse){.rise-card::after{opacity:.92}}
+@media(pointer:fine){.rise-card:hover::after,.rise-card:focus-within::after{opacity:.92}}
+.rise-card.alive-playing::after{opacity:0!important}
+
+/* --- emblem affordance ---------------------------------------------------- */
+.alive-emblem{cursor:pointer}
+
+/* --- reduced motion: everything rests ------------------------------------- */
+@media(prefers-reduced-motion:reduce){
+  /* static molten-gold drip fringe along the top edge (CSS only) */
+  body::before{content:"";position:fixed;top:0;left:0;right:0;height:16px;z-index:1;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 6% 0, var(--gold) 0 7px, transparent 8px),
+      radial-gradient(circle at 22% 0, var(--gold) 0 5px, transparent 6px),
+      radial-gradient(circle at 41% 0, var(--gold) 0 8px, transparent 9px),
+      radial-gradient(circle at 63% 0, var(--gold) 0 5px, transparent 6px),
+      radial-gradient(circle at 79% 0, var(--gold) 0 7px, transparent 8px),
+      radial-gradient(circle at 93% 0, var(--gold) 0 5px, transparent 6px),
+      linear-gradient(180deg, var(--gold), color-mix(in srgb,var(--gold) 30%,transparent));
+    background-size:100% 16px;opacity:.85}
+  #alive-pool{animation:none}
+  .gold-ticker-track{animation:none}
+  html.alive-js .alive-reveal{opacity:1;transform:none;transition:none;animation:none}
+  .original-card,.character,.universe-card,.rise-card{transition:none}
+  .original-card:hover,.character:hover,.universe-card:hover,.rise-card:hover{
+    transform:none}
+}
+
+/* --- tilt pill (mobile hero, only where motion access exists) ------------- */
+.alive-tilt-pill{display:none}
+@media(max-width:700px){
+  .alive-tilt-pill{display:inline-flex;align-items:center;min-height:42px;
+    padding:9px 16px;margin-top:18px;border-radius:999px;cursor:pointer;
+    background:transparent;color:var(--gold);border:1px solid var(--gold);
+    font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+  .alive-tilt-pill[hidden]{display:none!important}
+  .alive-tilt-pill.alive-on{background:color-mix(in srgb,var(--gold) 20%,transparent)}
+}
+
+/* --- rise shelf snap gallery (rise.html, narrow screens only) ------------- */
+@media(max-width:700px){
+  html.rise-page{scroll-snap-type:y proximity}
+  .rise-page .rise-grid{display:flex;flex-direction:column;gap:22px}
+  .rise-page .rise-card{scroll-snap-align:center}
+  .rise-page .rise-card video{max-height:72vh}
+}
+@media(prefers-reduced-motion:reduce){
+  html.rise-page{scroll-snap-type:none}
+  .alive-tilt-pill.alive-on{background:transparent}
+}
